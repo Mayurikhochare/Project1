@@ -1,69 +1,39 @@
-import java.util.ArrayList;
 public class Library1<T> {
+    String title;
+    String author;
+    double cost;
 
-    private ArrayList<T> mediaCollection = new ArrayList<T>();
+    T type;
 
-    public Library1() {
-        Book b = new Book();
-        storeMedia((T) b);
-        Video v = new Video();
-        storeMedia((T) v);
-        Newspaper n = new Newspaper();
-        storeMedia((T) n);
-        showMedia();
+    public Library1(T type,String title, String author, double cost) {
+        this.title = title;
+        this.author = author;
+        this.cost = cost;
+        this.type=type;
     }
-
-    public void showMedia() {
-        System.out.println("These items are in the media collection:");
-        for (Object resource : mediaCollection.toArray()) {
-            System.out.print("\t" + resource.toString() + "\n");
+    public void displayInfo(String video){
+        if(type.equals("String")){
+            System.out.println("Book Title: "+ title+"\n"+"Author: "+author+"\n"+"Cost: "+cost);
+            System.out.println("_________________________________________________________________________");
         }
-    }
-
-    public void storeMedia(T item) {
-        mediaCollection.add(item);
-    }
-
-    public class Book implements Media {
-
-        String type = "book";
-        String name = "Robinson Curuso";
-
-        public Book(){
-            System.out.println(this.getClass());
+        if(type.equals('M')){
+            System.out.println("Video Title: "+ title+"\n"+"Uploaded By: "+author+"\n"+"Cost: "+cost);
+            System.out.println("_________________________________________________________________________");
         }
-
-        public String toString() {
-            return "type is " + type + ", name is: " + name;
+        if(type.equals(1)){
+            System.out.println("Newspaper Title: "+ title+"\n"+"Publish By: "+author+"\n"+"Cost: "+cost);
+            System.out.println("__________________________________________________________________________");
         }
-    }
-
-    class Video implements Media {
-
-        String type = "video";
-        String name = "Elvis Pressley in the Army";
-
-        public String toString() {
-            return "type is " + type + ", name is: " + name;
-        }
-    }
-
-    class Newspaper {
-
-        String type = "newspaper";
-        String name = "News & Disturber";
-
-        public String toString() {
-            return "type is " + type + ", name is: " + name;
-        }
-    }
-
-    interface Media {
-//        String type;
     }
 
     public static void main(String[] args) {
-        Library1<Media> lib = new Library1<Media>();
-    }
+        Library1<String> library=new Library1("String","Robinson Curuso","daniel defoe",3000.9);
+        library.displayInfo("Video");
+        Library1<Character> library1=new Library1('M',"Elvis Pressley in the Army","daniel defoe",4500.50);
+        library1.displayInfo("Video");
+        Library1<Integer> library2=new Library1(1,"News & Disturber","Charlie",500.34);
+        library2.displayInfo("Video");
 
+
+    }
 }
