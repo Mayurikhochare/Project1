@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Versions {
+public class VersionsEx {
     private int major;
     private int minor;
     private int patch;
@@ -8,7 +8,7 @@ public class Versions {
     protected int prevMinor;
     protected int prevPatch;
 
-    public Versions(int major, int minor, int patch) {
+    public VersionsEx(int major, int minor, int patch) {
         if (major == -1 && minor == -1 && patch == -1) {
             this.major = 0;
             this.minor = 0;
